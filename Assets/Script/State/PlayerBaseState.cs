@@ -17,7 +17,7 @@ public abstract class PlayerBaseState : State
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
             Vector3 lookDirection = hit.point - stateMachine.transform.position;
-            lookDirection.y = 0; // ล็อกค่า Y ไว้ไม่ให้เอียงขึ้นหรือลง
+            lookDirection.y = 0; 
             stateMachine.transform.rotation = Quaternion.LookRotation(lookDirection);
         }
     }
@@ -25,7 +25,7 @@ public abstract class PlayerBaseState : State
 
     protected void Move(float deltaTime)
     {
-        stateMachine.characterController.Move(((CalculateMovement() * stateMachine.playerData.movementSpeed) + stateMachine.forceReceiver.movement) * deltaTime);
+        stateMachine.characterController.Move(((CalculateMovement() * stateMachine.movementSpeed) + stateMachine.forceReceiver.movement) * deltaTime);
     }
 
     protected void ReturnToWalk()

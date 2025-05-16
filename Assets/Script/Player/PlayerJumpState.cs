@@ -6,16 +6,15 @@ public class PlayerJumpState : PlayerBaseState
 {
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
-    private Vector3 momentum;
-
     public override void Enter()
     {
-        stateMachine.forceReceiver.Jump(stateMachine.playerData.jumpHeight);
+        stateMachine.forceReceiver.Jump(stateMachine.jumpHeight);
     }
 
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
+        CheckCursor();
 
         if (stateMachine.characterController.isGrounded)
         {
